@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c3705fd7v6ymi"]
 
 [ext_resource type="Texture2D" uid="uid://bvcjc312s1tvn" path="res://assets/textures/bg.png" id="1_u52iy"]
-[ext_resource type="Texture2D" uid="uid://1iikchbmle82" path="res://assets/textures/player_ship.png" id="2_xprbf"]
+[ext_resource type="PackedScene" uid="uid://b6qq1lsiepaxm" path="res://scenes/player.tscn" id="2_fb2es"]
 
 [node name="Game" type="Node2D"]
 
@@ -11,6 +11,5 @@ offset_bottom = 720.0
 texture = ExtResource("1_u52iy")
 stretch_mode = 1
 
-[node name="PlayerShip" type="Sprite2D" parent="."]
-position = Vector2(1277, 348)
-texture = ExtResource("2_xprbf")
+[node name="Player" parent="." instance=ExtResource("2_fb2es")]
+position = Vector2(111, 343)
