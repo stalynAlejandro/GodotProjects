@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://b5i302oufpfo1"]
+
+[ext_resource type="Script" path="res://level.gd" id="1_ge6we"]
+[ext_resource type="Texture2D" uid="uid://cpdhwix6rdkyl" path="res://Backgrounds/purple.png" id="1_wud4j"]
+[ext_resource type="PackedScene" uid="uid://syfqqqvkc2if" path="res://player.tscn" id="2_8x1pt"]
+[ext_resource type="PackedScene" uid="uid://c8jku84ioki6r" path="res://area_2d.tscn" id="4_fvn8i"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8wgwp"]
+font_size = 34
+
+[node name="Level1" type="Node2D"]
+script = ExtResource("1_ge6we")
+
+[node name="Graphics" type="Node" parent="."]
+
+[node name="StartLabel" type="Label" parent="Graphics"]
+offset_left = 506.0
+offset_top = 47.0
+offset_right = 607.0
+offset_bottom = 97.0
+text = "START"
+label_settings = SubResource("LabelSettings_8wgwp")
+
+[node name="EndLabel" type="Label" parent="Graphics"]
+offset_left = 579.0
+offset_top = -1824.0
+offset_right = 680.0
+offset_bottom = -1774.0
+text = "END"
+label_settings = SubResource("LabelSettings_8wgwp")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Graphics"]
+layer = -1
+
+[node name="Background" type="TextureRect" parent="Graphics/CanvasLayer"]
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_wud4j")
+stretch_mode = 1
+
+[node name="Player" parent="." instance=ExtResource("2_8x1pt")]
+modulate = Color(0.113725, 0.780392, 0.917647, 1)
+z_index = 1
+position = Vector2(606, 280)
+gravity_scale = 0.0
+
+[node name="Area2D" parent="." instance=ExtResource("4_fvn8i")]
+z_index = -1
+
+[connection signal="body_exited" from="Area2D" to="Player" method="_on_area_2d_body_exited"]
