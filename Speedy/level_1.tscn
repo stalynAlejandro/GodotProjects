@@ -30,10 +30,10 @@ text = "END"
 label_settings = SubResource("LabelSettings_8wgwp")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Graphics"]
-layer = -1
+layer = -10
 
 [node name="Background" type="TextureRect" parent="Graphics/CanvasLayer"]
-z_index = -1
+z_as_relative = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -42,13 +42,13 @@ grow_vertical = 2
 texture = ExtResource("1_wud4j")
 stretch_mode = 1
 
+[node name="Area2D" parent="." instance=ExtResource("4_fvn8i")]
+z_as_relative = false
+
 [node name="Player" parent="." instance=ExtResource("2_8x1pt")]
 modulate = Color(0.113725, 0.780392, 0.917647, 1)
-z_index = 1
+z_as_relative = false
 position = Vector2(606, 280)
 gravity_scale = 0.0
-
-[node name="Area2D" parent="." instance=ExtResource("4_fvn8i")]
-z_index = -1
 
 [connection signal="body_exited" from="Area2D" to="Player" method="_on_area_2d_body_exited"]
