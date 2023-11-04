@@ -1,13 +1,10 @@
 extends CharacterBody2D
-#var rocketScene = load("res://scenes/rocket.tscn")
+
+signal took_damage
+
 var rocketScene = preload("res://scenes/rocket.tscn")
 
-#@onready var rocketContainer = get_node("RocketContainer")
 @onready var rocketContainer = $RocketContainer #get_node("RocketContainer")
-
-#func _ready():
-#	rocketContainer = get_node("RocketContainer")
-	
 
 func shoot():
 	var rocketInstance = rocketScene.instantiate()
@@ -36,4 +33,8 @@ func _physics_process(delta):
 	var screen_size = get_viewport_rect().size
 	global_position = global_position.clamp(Vector2(0,0), screen_size)
 
-
+func take_damage():
+	emit_signal("took_damage")
+	
+func die():
+	queue_free()
