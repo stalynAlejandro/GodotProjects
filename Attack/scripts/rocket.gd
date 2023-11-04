@@ -7,11 +7,11 @@ func _ready():
 	visibleNotifier.connect("screen_exited", _on_screen_exited)
 
 func _physics_process(delta):
-	global_position.x += speed*delta # how many pixels per seconds
-	print(speed*delta)
-
+	global_position.x += speed*delta #how many pixels per seconds
 
 func _on_screen_exited():
-	print("exited screen")
 	queue_free()
-	pass # Replace with function body.
+
+func _on_area_entered(area):
+	queue_free()
+	area.die()
