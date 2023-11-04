@@ -1,6 +1,6 @@
 extends Node2D
 
-var lives = 3
+var lives = 5
 var score = 0
 
 @onready var player = $Player
@@ -8,9 +8,12 @@ var score = 0
 
 func _ready():
 	hud.setScoreLabel(score)
+	hud.setLivesLabel(lives)
 
 func _on_player_took_damage():
 	lives -= 1
+	hud.setLivesLabel(lives)
+	
 	if lives == 0:
 		player.die()
 		print("Game Over")
