@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://c3705fd7v6ymi"]
+[gd_scene load_steps=8 format=3 uid="uid://c3705fd7v6ymi"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_p88ox"]
 [ext_resource type="Texture2D" uid="uid://bvcjc312s1tvn" path="res://assets/textures/bg.png" id="1_u52iy"]
 [ext_resource type="PackedScene" uid="uid://bekyiegx5peyt" path="res://scenes/hud.tscn" id="2_cqii7"]
 [ext_resource type="PackedScene" uid="uid://b6qq1lsiepaxm" path="res://scenes/player.tscn" id="2_fb2es"]
 [ext_resource type="PackedScene" uid="uid://dd48nk473vjyx" path="res://scenes/enemy_spawner.tscn" id="3_2fomm"]
+[ext_resource type="AudioStream" uid="uid://dng1d037pgp0b" path="res://assets/audio/hit.wav" id="6_31hvt"]
+[ext_resource type="AudioStream" uid="uid://dalndvn6x130c" path="res://assets/audio/explode.wav" id="7_g7db4"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_p88ox")
@@ -29,6 +31,10 @@ position = Vector2(111, 343)
 [node name="EnemySpawner" parent="." instance=ExtResource("3_2fomm")]
 
 [node name="EnemyHitSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_31hvt")
+
+[node name="PlayerHitSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_g7db4")
 
 [connection signal="took_damage" from="Player" to="." method="_on_player_took_damage"]
 [connection signal="enemySpawend" from="EnemySpawner" to="." method="_on_enemy_spawner_enemy_spawend"]

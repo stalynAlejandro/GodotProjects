@@ -5,8 +5,11 @@ signal took_damage
 var rocketScene = preload("res://scenes/rocket.tscn")
 
 @onready var rocketContainer = $RocketContainer #get_node("RocketContainer")
+@onready var rocketShootSound = $RocketShootSound
+
 
 func shoot():
+	rocketShootSound.play()
 	var rocketInstance = rocketScene.instantiate()
 	rocketInstance.global_position = global_position
 	rocketInstance.global_position.x += 70
